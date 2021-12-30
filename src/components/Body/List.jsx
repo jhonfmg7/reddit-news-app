@@ -34,6 +34,7 @@ const List = ({ variantList }) => {
     const onRefresh = useCallback(async() => {
         setRefreshing(true);
         if (!loading) {
+            getRedditPost();
             setRefreshing(false);
         }
     }, [ refreshing, loading ]);
