@@ -7,18 +7,21 @@ import List from './src/components/Body/List';
 
 // State
 import State from './src/context/state';
+import LoaderPage from './src/components/Loader/LoaderPage';
 
 export default function App() {
 
   // Local state 
   const [ variantList, setVariantList ] = useState('New');
+  const [ loading, setLoading ] = useState(true);
 
   return (
     <State>
       <View style={ styles.container }>
+        { loading && <LoaderPage setLoading={ setLoading } /> }
         <Text style={ styles.text }>reddit/r/progaming</Text>
         <Header variantList={ variantList } setVariantList={ setVariantList } />
-        <List variantList={ variantList } setVariantList={ setVariantList } />
+        <List variantList={ variantList } setLoading={ setLoading } />
       </View>
     </State>
   );
